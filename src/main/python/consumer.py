@@ -15,3 +15,10 @@ f.write(base64.decodebytes(bytes(result, "utf-8")))
 f.close()
 
 print("The screenshot has been successfully taken and saved under the following path: "+os.path.abspath(f.name))
+
+rebootStatus = rat.reboot()
+
+if rebootStatus:
+    print("The remote server has been successfully rebooted.")
+else: 
+    print("The remote server has not been successfully rebooted.")
