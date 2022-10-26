@@ -14,7 +14,7 @@
 ### Java Provider class
 - Rat service business implementation is the following: ma.aui.sse.paradigms.integration.xs.rat.provider.RemoteAccessUtility
 - There is no DTO classes as I will be transferring structures already found in Java Foundation classes.
-- Provider main class creates an instance of the rat business implementation (RemoteAccessUtility class) and publishes it as a web service under `http://localhost:80/rat` using JAX-WS Endpoint class: ma.aui.sse.paradigms.integration.xs.rat.provider.Provider
+- Provider main class creates an instance of the rat business implementation (RemoteAccessUtility class) and publishes it as a web service under `http://localhost:8080/rat` using JAX-WS Endpoint class: ma.aui.sse.paradigms.integration.xs.rat.provider.Provider
 
 ### WSDL and Java server stub code
 - The code is built using the following command:
@@ -37,8 +37,11 @@
 ## Design of the Web Service Functionalities
 The web service RAT does three main functions:
 - List all processes running remote server
+    - If the client wants to get a list of all processes running on the remote server, they should call the procedure "getProcesses()" remotely.
     - Returns a list of strings, where each string specifies a specific process running on the remote process
 - Screenshot remote server
-    - Returns a Base64 representation of a png image, which is the screenshot grabbed.
+    - If the client wants to take a screenshot of the remote system, they should call the procedure "screenshot()" remotely.
+    - Returns a Base64 string representation of a png image, which is the screenshot grabbed.
 - Reboot remote server
+    - If the client wants to reboot the system, they should call the procedure "reboot()" remotely. 
     - Reboots remote server, and returns true or false as a status code if the rebooting is successful.
